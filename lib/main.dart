@@ -1,66 +1,187 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:skeleton_flutter/net/dioHelper.dart';
+import 'package:skeleton_flutter/notifications/notifcation.dart';
+import 'package:skeleton_flutter/router/router_path.dart';
+import 'package:skeleton_flutter/ui/splash.dart';
 
-void main() {
-  runApp(MyApp());
+import 'theme/colors.dart';
+import 'theme/style.dart';
+
+
+Future<void> main() async {
+  AppNotification.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  GestureBinding.instance.resamplingEnabled = true;
+  DioHelper.dioObject;
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((value){
+    runApp(
+      MyApp()
+    );
+  });
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  MyApp();
+
+  @override
+  MyAppState createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  static final GlobalKey<NavigatorState> navigatorKey =  GlobalKey<NavigatorState>();
+  @override
+  void initState() {
+    super.initState();
+    // Wakelock.enable();
+    // PreferenceManager.init();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: AppColors.bottomNavigationBackground,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
+
+    SystemChrome.setEnabledSystemUIOverlays(
+        [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'MyApp',
+      navigatorKey: navigatorKey,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          primarySwatch: AppColors.primaryColor,
+          accentColor: AppColors.accentColor,
+          textTheme: AppStyles.textTheme,
+          canvasColor: Colors.white,
+          scaffoldBackgroundColor: AppColors.bgIntroScreen,
+          unselectedWidgetColor: Colors.white,
+          cupertinoOverrideTheme: CupertinoThemeData(
+              textTheme: CupertinoTextThemeData(
+                dateTimePickerTextStyle:
+                TextStyle(color: AppColors.textYellow, fontSize: 16),
+                pickerTextStyle:
+                TextStyle(color: AppColors.textYellow, fontSize: 16),
+              ),
+              brightness: Brightness.dark),
+          hintColor: AppColors.textGray,
+          textSelectionHandleColor: AppColors.accentColor,
+          inputDecorationTheme: InputDecorationTheme(
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.textFieldBorder)),
+            enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.textFieldBorder)),
+            hintStyle: TextStyle(color: AppColors.textGray),
+          )),
+      initialRoute: PageRoutes.splash,
+      routes: _pageMap(),
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  _pageMap() {
+    return <String, WidgetBuilder>{
+      PageRoutes.channelDetail: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.movieDetail: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.videoDetail: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.splash: (BuildContext context) => SplashPage(),
+      PageRoutes.main: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.signIn: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.enterPhoneNumber: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.otp: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.createNewPassword: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.submitProfile: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.search: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.qrScanner: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.watchingHistory: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.favorites: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.changePassword: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.loginDevices: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.aboutUs: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.agreement: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.contact: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.frequentlyQuestions: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.help: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.detailIntroduction: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.policy: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.support: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.changeInfoText: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.videos: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.movies: (BuildContext context) {
+        return Container();
+      },
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      PageRoutes.channels: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.actorDetail: (BuildContext context) {
+        return Container();
+      },
+      PageRoutes.searchResults: (BuildContext context) {
+        return Container();
+      },
+    };
   }
 }

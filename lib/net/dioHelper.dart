@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:skeleton_flutter/common/pretty_dio_logger.dart';
+import 'package:skeleton_flutter/net/pretty_dio_logger.dart';
 
 class DioHelper {
   static Dio _dio;
@@ -19,19 +19,19 @@ class DioHelper {
         return options;
       }, onResponse: (Response response) {
         return response; // continue
-      }, onError: (DioError error) async {
+      }, onError: (DioError error) {
         if (error.response?.statusCode == 401) {
-          _dio.interceptors.requestLock.lock();
-          _dio.interceptors.responseLock.lock();
-          RequestOptions options = error.response.request;
+          // _dio.interceptors.requestLock.lock();
+          // _dio.interceptors.responseLock.lock();
+          // RequestOptions options = error.response.request;
           // await GraphQLHelper.getAccessTokenInRefreshToken(_groupId);
           // updateAccessToken();
           // options.headers['Authorization'] =  TokenManagerHelper.getToken(groupId: _groupId).accessToken;
-          _dio.interceptors.requestLock.unlock();
-          _dio.interceptors.responseLock.unlock();
-          return _dio.request(options.path, options: options);
+          // _dio.interceptors.requestLock.unlock();
+          // _dio.interceptors.responseLock.unlock();
+          // return _dio.request(options.path, options: options);
         } else {
-          return error;
+          // return error;
         }
       }));
       _dio.options.headers['Accept-Language'] = 'vi-VN';
