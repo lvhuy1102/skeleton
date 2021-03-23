@@ -1,16 +1,14 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:skeleton_flutter/net/dioHelper.dart';
 import 'package:skeleton_flutter/notifications/notifcation.dart';
+import 'package:skeleton_flutter/notifications/notifcation.dart';
 import 'package:skeleton_flutter/router/router_path.dart';
+import 'package:skeleton_flutter/ui/main/main_page.dart';
+import 'package:skeleton_flutter/ui/main/qr_scanner.dart';
 import 'package:skeleton_flutter/ui/splash.dart';
-
 import 'theme/colors.dart';
 import 'theme/style.dart';
 
@@ -104,7 +102,7 @@ class MyAppState extends State<MyApp> {
       },
       PageRoutes.splash: (BuildContext context) => SplashPage(),
       PageRoutes.main: (BuildContext context) {
-        return Container();
+        return MainPage();
       },
       PageRoutes.signIn: (BuildContext context) {
         return Container();
@@ -125,7 +123,7 @@ class MyAppState extends State<MyApp> {
         return Container();
       },
       PageRoutes.qrScanner: (BuildContext context) {
-        return Container();
+        return QRScannerPage();
       },
       PageRoutes.watchingHistory: (BuildContext context) {
         return Container();

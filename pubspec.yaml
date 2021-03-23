@@ -34,20 +34,32 @@ dependencies:
   marquee: ^1.7.0
   pull_to_refresh: ^1.6.3
   shared_preferences: ^0.5.3+4
-  connectivity: ^2.0.2
+  connectivity: ^3.0.3
   pretty_dio_logger: ^1.1.1
   dio: ^3.0.10
   path_drawing: ^0.4.1+1
   copy_with_extension: ^1.4.0
   json_serializable: ^3.5.1
   tuple: ^1.0.3
-  open_file: ^3.0.3
+  open_file: ^3.1.0
   extended_image: ^1.5.0
   flutter_local_notifications: ^4.0.1+2
   rxdart: ^0.24.0
   flutter_screenutil: ^4.0.3+3
   get_it: ^4.0.2
   provider: ^4.1.3
+  google_fonts: ^1.1.2
+  line_icons: ^1.3.2
+  permission_handler: ^5.1.0+2
+  flutter_svg: ^0.19.3
+  qr_code_scanner: ^0.3.5
+  vibration: ^1.7.3
+  youtube_api: ^0.8.0
+  intl: ^0.17.0
+
+
+
+
 
 
 
@@ -102,3 +114,74 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  assets:
+    - assets/fonts/AppIcons.ttf
+    - assets/fonts/SFProTextRegular.otf
+    - assets/fonts/SFProTextSemibold.otf
+    - assets/images/bg_login.png
+    - assets/images/bg_splash.png
+    - assets/images/ic_arrow_down.svg
+    - assets/images/ic_bag.svg
+    - assets/images/ic_checked.png
+    - assets/images/ic_day_of_birth.svg
+    - assets/images/ic_down.svg
+    - assets/images/ic_fastforward_ten_seconds.svg
+    - assets/images/ic_favorite.svg
+    - assets/images/ic_favorite_border.svg
+    - assets/images/ic_film.svg
+    - assets/images/ic_half_rate.png
+    - assets/images/ic_home.svg
+    - assets/images/ic_hor_three_dot.svg
+    - assets/images/ic_key.svg
+    - assets/images/ic_live.svg
+    - assets/images/ic_location.svg
+    - assets/images/ic_login_apple.svg
+    - assets/images/ic_login_facebook.svg
+    - assets/images/ic_login_google.svg
+    - assets/images/ic_mute.svg
+    - assets/images/ic_next.svg
+    - assets/images/ic_pause.svg
+    - assets/images/ic_phone_number.svg
+    - assets/images/ic_pip_expand.svg
+    - assets/images/ic_play.svg
+    - assets/images/ic_previous.svg
+    - assets/images/ic_rewind_ten_seconds.svg
+    - assets/images/ic_scan_qrcode.svg
+    - assets/images/ic_schedule.svg
+    - assets/images/ic_search.svg
+    - assets/images/ic_share.svg
+    - assets/images/ic_star.png
+    - assets/images/ic_star_no_rate.png
+    - assets/images/ic_successfully_add_favorite.svg
+    - assets/images/ic_successfully_remove_favorite.svg
+    - assets/images/ic_three_dot.svg
+    - assets/images/ic_today.png
+    - assets/images/ic_tv.svg
+    - assets/images/ic_unmute.svg
+    - assets/images/ic_video.svg
+    - assets/images/icon.png
+    - assets/images/image_empty_devices.png
+    - assets/images/image_empty_epg.png
+    - assets/images/image_empty_favorite.png
+    - assets/images/image_empty_histories.png
+    - assets/images/image_empty_search.png
+    - assets/images/image_gradient.png
+    - assets/images/image_rocket.png
+    - assets/images/logo.png
+    - assets/images/logo_newyear.png
+    - assets/images/logo_second.png
+    - assets/images/placeholder_avatar.png
+    - assets/images/placeholder_banner.png
+    - assets/images/placeholder_poster.png
+    - assets/images/placeholder_thumb.png
+    - assets/images/test_film_detail.png
+  fonts:
+    - family: SFPro
+      fonts:
+        - asset: assets/fonts/SFProTextRegular.otf
+        - asset: assets/fonts/SFProTextSemibold.otf
+          weight: 700
+    - family: AppIcons
+      fonts:
+        - asset: assets/fonts/AppIcons.ttf
